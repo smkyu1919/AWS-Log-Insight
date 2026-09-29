@@ -1,0 +1,10 @@
+fields delivery.priceInUSD as price
+| stats count(*) as SMSCount,
+        sum(price) as CostUSD
+
+=============================================================
+fields delivery.priceInUSD as price, status
+| stats count(*) as SMSCount,
+        sum(price) as CostUSD
+  by status
+| sort CostUSD desc
